@@ -153,7 +153,21 @@ module Fastlane
                 for i in 0...avd_schemes.length
                   device = ["emulator-", avd_schemes[i].launch_avd_port].join('')
                   cmd = [adb_controller.adb_path, '-s', device, 'logcat -c || true'].join(' ')
-                  Action.sh(cmd) unless devices.match(device).nil?
+                  unless devices.match(device).nil?
+                    retriesMax = 4
+                    retriesCount = 0
+                    while retriesCount < retriesMax do
+                      begin 
+                        Action.sh(cmd)
+                      rescue
+                        UI.message("Logcat flush failed. Retrying.")
+                        sleep(2)
+                      else
+                        break 
+                      end
+                    end
+
+                  end
                 end
               end
             else
