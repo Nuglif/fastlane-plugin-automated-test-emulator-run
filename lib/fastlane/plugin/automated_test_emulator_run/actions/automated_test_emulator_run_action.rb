@@ -157,12 +157,17 @@ module Fastlane
                     retriesMax = 4
                     retriesCount = 0
                     while retriesCount < retriesMax do
+                    loop do
                       begin 
                         Action.sh(cmd)
-                      rescue Exception
+                      rescue => ex
                         UI.message("Logcat flush failed. Retrying.")
                         sleep(2)
                         retriesCount+=1
+                        if retriesCount > retriesMax
+                          throw ex
+                          break;
+                        end
                       else
                         break 
                       end
