@@ -160,7 +160,7 @@ module Fastlane
                       begin 
                         out = Action.sh(cmd)
                         UI.message("msg: "+out)
-                      rescue => ex
+                      rescue Exception => ex
                         UI.message("Logcat flush failed. Retrying.")
                         sleep(2)
                         retriesCount+=1
