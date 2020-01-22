@@ -158,7 +158,8 @@ module Fastlane
                     retriesCount = 0
                     loop do
                       begin 
-                        Action.sh(cmd)
+                        out = Action.sh(cmd)
+                        UI.message("msg: "+out)
                       rescue => ex
                         UI.message("Logcat flush failed. Retrying.")
                         sleep(2)
@@ -168,6 +169,7 @@ module Fastlane
                           break
                         end
                       else
+                        UI.message("No error.")
                         break 
                       end
                     end
