@@ -152,7 +152,7 @@ module Fastlane
               if params[:logcat]
                 for i in 0...avd_schemes.length
                   device = ["emulator-", avd_schemes[i].launch_avd_port].join('')
-                  cmd = [adb_controller.adb_path, '-s', device, 'logcat -c'].join(' ')
+                  cmd = [adb_controller.adb_path, '-s', device, 'logcat -c || true'].join(' ')
                   Action.sh(cmd) unless devices.match(device).nil?
                 end
               end
