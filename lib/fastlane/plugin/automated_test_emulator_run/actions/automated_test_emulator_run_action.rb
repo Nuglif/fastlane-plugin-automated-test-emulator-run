@@ -156,7 +156,6 @@ module Fastlane
                   unless devices.match(device).nil?
                     retriesMax = 4
                     retriesCount = 0
-                    while retriesCount < retriesMax do
                     loop do
                       begin 
                         Action.sh(cmd)
@@ -166,13 +165,12 @@ module Fastlane
                         retriesCount+=1
                         if retriesCount > retriesMax
                           throw ex
-                          break;
+                          break
                         end
                       else
                         break 
                       end
                     end
-
                   end
                 end
               end
