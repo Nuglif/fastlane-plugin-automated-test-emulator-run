@@ -29,6 +29,10 @@ module Fastlane
           sh_create_avd_name = ["--name \"", avd_scheme.avd_name, "\""].join("")
           sh_create_avd_package = ["--package \"", avd_scheme.create_avd_package, "\""].join("")
 
+          if avd_scheme.create_avd_force
+            sh_create_avd_force = "--force "
+          end
+
           if avd_scheme.create_avd_device.eql? "" 
             sh_create_avd_device = ""
           else
@@ -78,6 +82,7 @@ module Fastlane
             path_avdmanager_binary,
             sh_create_avd,
             sh_create_avd_name,
+            sh_create_avd_force,
             sh_create_avd_package,
             sh_create_avd_device,
             sh_create_avd_tag,

@@ -42,6 +42,7 @@ JSON file scheme:
 
           "create_avd_package": "",
           "create_avd_device": "",
+          "create_avd_force": "",
           "create_avd_tag": "",
           "create_avd_abi": "",
           "create_avd_additional_options": "",
@@ -61,6 +62,7 @@ Parameters:
 - `avd_name` - name of your AVD, avoid using spaces, this field is necessary
 - `create_avd_package` - path to system image in example "system-images;android-23;google_apis;x86_64"
 - `create_avd_device` - name of your device visible on `avdmanager list device` list
+- `create_avd_force` - force creation of avd
 - `create_avd_tag` - the sys-img tag to use for the AVD. e.g. if you are using Google Apis then set it to "google_apis"
 - `create_avd_abi` - abi for AVD e.g. "x86" or "x86_64" (https://developer.android.com/ndk/guides/abis.html)
 - `create_avd_hardware_config_filepath` - path to config.ini file containing custom config for your AVD. After AVD is created this file will be copied into AVD location before it launches.
